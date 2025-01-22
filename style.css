@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(233, 76, 244);
+}
+
+h1{
+    background-color: tomato;
+}
+
+p{
+    color: white;
+    margin: ;
+
+   
+}
+
+
+h2{
+    color: white;
+}
+h3{
+    color: white;
+}
+h4{
+    color: white;
+}
+li{
+    color: white;
+}
+
+a{
+    color: rgb(206, 250, 30);
+}
+#second{
+    color: red;
+}
+
+.items{
+    color: red;
+}
