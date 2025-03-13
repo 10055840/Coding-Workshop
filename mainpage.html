@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Page</title>
+    <style>
+        /* Full page background color */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: auto; /* Allow scrolling */
+            position: relative;
+        }
+
+        /* Full page container for the background shapes */
+        .floating-shapes-container {
+            position: fixed; /* Make it fixed to the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Make sure it's behind content */
+            pointer-events: none; /* Avoid interference with scrolling and clicking */
+        }
+
+        /* Make the container for the content take full height but allow scrolling */
+        .content-container {
+            position: relative;
+            z-index: 1; /* Keeps content above floating shapes */
+            padding: 20px;
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* Bibliography link styling */
+        .bibliography-link {
+            display: block;
+            text-align: center;
+            font-size: 1.2rem;
+            color: red;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        /* Section styling for each part */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        /* Quote text styling */
+        blockquote {
+            font-size: 2rem;
+            font-style: italic;
+            color: red;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* Following text styling */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Floating shape class */
+        .shape {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+            pointer-events: none;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        /* Keyframe for floating animation */
+        @keyframes float {
+            0% {
+                transform: translate3d(var(--start-x), var(--start-y), 0);
+            }
+            100% {
+                transform: translate3d(var(--end-x), var(--end-y), 0);
+            }
+        }
+
+        /* Style for the image */
+        img {
+            max-width: 80%; /* Adjust the percentage to control the size */
+            height: auto; /* Maintain the aspect ratio */
+            display: block; /* Ensure it's a block element */
+            margin: 20px auto; /* Center the image horizontally and add top/bottom margin */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating shapes container that stays behind content -->
+    <div class="floating-shapes-container">
+        <!-- Floating shapes will be generated dynamically by JavaScript -->
+    </div>
+
+    <div class="content-container">
+        <h1>Between Destruction and Rebirth: The Materiality of Memory in Gaza’s Ressurection</h1>
+        
+        <!-- Link to Bibliography page -->
+        <a href="bibliography.html" class="bibliography-link">Bibliography</a>
+
+        <!-- Section 1 -->
+        <div class="section">
+            <blockquote>“The best memorial may be no memorial at all—but instead, an ongoing, unending conversation about what happened.” James E Young.</blockquote>
+            <p>Young’s assertion invites us to reconsider memory in Gaza, where daily life itself becomes a constant act of remembrance. While one might initially think that the most fitting form of memorialization in Gaza would be an ongoing dialogue, this conversation is already happening. This is not a bookended event. The occupation of Gaza continues and until this ends the tragedy is likely to continue in some form. Today, the horrors of Israeli state terror and war crimes remain embedded in the daily existence of Gaza’s residents, with many families still unable to properly bury their dead, as rubble and destruction persist in the streets. There is no shortage of an “ongoing, unending conversation” within Gaza, but much of the global conversation surrounding Gaza—shaped by Western state propaganda—fails to grasp the reality of genocide or to reflect the true lived experience of its people. Is the best memorial for an ongoing genocide and occupation a memorial outside of Gaza?</p>
+
+            <p>Additionally, a shift in memorialization might not simply lie in global or external conversations but rather in rethinking the very nature of how Gaza rebuilds itself. Memorializing through everyday engagement, rather than through singular monuments, could offer a path toward remembrance that extends beyond the static and the symbolic. Rebuilding Gaza through spatial redesign may create an opportunity to create spaces that embody both memory and resilience. Instead of reconstructing what was destroyed, design can take a forward-looking approach that incorporates visual narratives of strength, survival, and collective renewal. These redesigned spaces would not only serve as everyday memorials but also contribute to the resilience of Gaza’s inhabitants, fostering environments where the conversation about the past is coupled with a vision for the future. The idea is not to forget the trauma but to weave it into the very fabric of the city in ways that encourage ongoing reflection and resilience, allowing for the collective healing of both space and community. </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <blockquote>“If it is a human thing to do to put something you want, because it’s useful, edible, or beautiful, into a bag or a basket, then it’s also a human thing to do to put words, stories, meanings, into a bag.”</blockquote>
+            <p>Rather than a grand, singular monument, what if Gaza’s memorialization functioned as a carrier bag—an accumulation of small, intimate, everyday acts of remembrance, collected over time? Gaza is the carrier bag and within it lies the most important act of collecting, being human, building stories and creating meaning together, continuing to exist.</p>
+            <p>Gaza’s memory cannot be contained in a single monument. It must be carried. It must be dispersed, gathered, released.</p>
+            <p>A memorial that is not a site, but a practice. A practice of rebuilding through a specific visual language.</p>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section">
+            <blockquote>"To be in the wake is to live in those intimate spaces that are filled with terror, and also to recognize and imagine new ways of living in those spaces."</blockquote>
+            <p>Sharpe’s concept of "the wake" can apply to Gaza’s post-destruction landscape. Gaza is physically, emotionally, and politically in the wake of ongoing catastrophe. How can memorialization function not as closure but as a continued witnessing?</p>
+            <p>"The wake"—a space filled with terror and trauma—aptly captures Gaza’s ongoing post-destruction reality. Gaza remains in the wake of continuous conflict, where the physical, emotional, and political landscapes are shaped by the legacies of violence and loss. In this context, memorialization does not serve as closure but as an act of continued witnessing, recognizing the persistent effects of catastrophe while acknowledging resilience. Gaza’s rebuilding efforts, therefore, can be understood not as a return to normalcy but as a process of navigating and reimagining destruction. The reconstruction of Gaza, through thoughtful design and materiality, offers an opportunity to create spaces that both honor past trauma and foster new ways of living. This process is about resisting the wake, not erasing it—enabling a future that, while shaped by loss, moves toward renewal and transformation. Gaza's language of rebuilding can visually remember the wake, the past that floats behind, while building the structures that navigate a rebirth out of the cointued wake.</p>
+        </div>
+
+         <!-- Section 4 -->
+         <div class="section">
+            <img src="Images/cdm.png" alt="Cornelia Parker's Cold Dark Matter: An Exploded View">
+            <p>Cornelia Parker’s Cold Dark Matter: An Exploded View offers a powerful commentary on destruction and preservation. The artwork freezes the chaotic remnants of an explosion in mid-air, creating a fragmented, yet strangely unified, composition. This suspension of broken parts captures the tension between devastation and continuity, showing how individual fragments, while shattered, still exist within a larger framework. The suspended time and suspended material resonate with Gaza’s own reality—where the rubble is not merely a sign of destruction but a deep symbol of both trauma and history. The fragmented nature of Parker’s piece mirrors Gaza’s landscape, which is also torn apart by violence, yet still teeming with the possibility of renewal.</p>
+            <p>This concept provides a rich way to think about Gaza’s reconstruction and how memorialization could take form. Instead of clearing away or covering over the remnants of the past, the rubble could be integrated into the new city—both physically and symbolically—linking history to the present. Much like Parker’s work, this approach would position each fragment in relation to the others, inviting people to walk through spaces where the past and future coexist. Each piece of history would be recognized individually, while also contributing to a larger, collective experience of memory, resilience, and community. This would create a memorial that is dynamic and living, one that evolves over time and invites ongoing reflection. By adopting this fragmented, non-monolithic approach to memorialization, Gaza could create a space that reflects both the ongoing trauma and the enduring resilience of its people, offering a reminder that rebuilding isn’t about erasing history, but carrying it forward.</p>
+            <p>What would it mean to suspend Gaza’s rubble? Not to clear it, not to rebuild over it, but to hold it in tension—to make visible the fact that nothing is settled? A piece of concrete, balanced between two buildings. A rebar fragment, caught mid-air, serving as a new outlook or vantage point for a neighboring building. The walls of a new school, reinforced by piles of rubble, the roofing emerging in both memory and ressurection. Gaza is already an exploded view, but what do we do with the pieces on the ground? The city exists in a state between destruction and rebirth, and Parker's Cold Dark Matter may provide Gaza a suspended blueprint for reconstruction and memorialization.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to create a random polygon shape with randomized properties
+        function createRandomShape() {
+            const shape = document.createElement('div');
+            shape.classList.add('shape');
+
+            // Randomize size
+            const width = Math.floor(Math.random() * 150) + 50; // 50px to 150px
+            const height = Math.floor(Math.random() * 150) + 50; // 50px to 150px
+            shape.style.width = `${width}px`;
+            shape.style.height = `${height}px`;
+
+            // Randomize the shape with clip-path (polygon)
+            const randomClipPath = `polygon(${Math.random() * 100}% ${Math.random() * 100}%, ${Math.random() * 100}% ${Math.random() * 100}%, ${Math.random() * 100}% ${Math.random() * 100}%)`;
+            shape.style.clipPath = randomClipPath;
+
+            // Randomize the start and end positions for animation
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight;
+            const endX = Math.random() * window.innerWidth;
+            const endY = Math.random() * window.innerHeight;
+
+            // Apply these to CSS custom properties for animation
+            shape.style.setProperty('--start-x', `${startX}px`);
+            shape.style.setProperty('--start-y', `${startY}px`);
+            shape.style.setProperty('--end-x', `${endX}px`);
+            shape.style.setProperty('--end-y', `${endY}px`);
+
+            // Append the shape to the floating shapes container
+            document.querySelector('.floating-shapes-container').appendChild(shape);
+        }
+
+        // Create 50 random shapes
+        for (let i = 0; i < 50; i++) {
+            createRandomShape();
+        }
+    </script>
+
+</body>
+</html>

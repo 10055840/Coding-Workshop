@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken Text Effect</title>
+    <style>
+        /* Importing blocky font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+        /* Full page background color */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: 'Roboto Mono', monospace; /* Using the blocky font */
+            display: flex;
+            flex-direction: column; /* Align elements in column */
+            justify-content: flex-start; /* Align content to the top */
+            align-items: center; /* Center content horizontally */
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 4.5rem; /* Increased font size for the title */
+            margin-top: 40px; /* Space above the title */
+            margin-bottom: 40px; /* Space below the title */
+            letter-spacing: 2px; /* Spacing between letters */
+        }
+
+        /* Container for the text with padding for space around the text */
+        .text-container {
+            padding: 40px; /* Space inside the container */
+            margin: 0 40px; /* Space around the container from the edges */
+        }
+
+        /* Text container with a slightly smaller font size for individual citations */
+        .broken-text {
+            font-size: 1.5rem; /* Reduced font size for citations */
+            white-space: normal;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Style for list items with added spacing */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        /* Add random displacement per bullet */
+        .bullet-1 span {
+            transform: translate(-6px, -2px);
+        }
+
+        .bullet-2 span {
+            transform: translate(3px, 4px);
+        }
+
+        .bullet-3 span {
+            transform: translate(-4px, 5px);
+        }
+
+        .bullet-4 span {
+            transform: translate(6px, -4px);
+        }
+
+        .bullet-5 span {
+            transform: translate(2px, -5px);
+        }
+
+        .bullet-6 span {
+            transform: translate(-3px, 6px);
+        }
+
+        /* Each character has slight displacement */
+        .broken-text span {
+            display: inline-block;
+            position: relative;
+            opacity: 1;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .broken-text span:nth-child(odd) {
+            transform: translate(-3px, -3px);
+        }
+
+        .broken-text span:nth-child(even) {
+            transform: translate(4px, 2px);
+        }
+
+        .broken-text span:nth-child(3n) {
+            transform: translate(-5px, 5px);
+        }
+
+        .broken-text span:nth-child(4n) {
+            transform: translate(3px, -4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Title at the top of the page -->
+    <h1>Bibliography</h1>
+
+    <!-- Container to wrap the text and add padding/margin -->
+    <div class="text-container">
+        <div class="broken-text">
+            <ul>
+                <li class="bullet-2"><span>Bhattacharyya, G. (2023) We, The Heartbroken. London: Hajar Press. </span></li>
+                <li class="bullet-2"><span>Jones, C. and et al. (1985) ‘NAMES Project AIDS Memorial Quilt’,. National AIDS Memorial.  </span></li>
+                <li class="bullet-1"><span>Le Guin, U. K. (1988). "The Carrier Bag Theory of Fiction." In Women of Vision</span></li>
+                <li class="bullet-1"><span>Nezouh (2022). Italy: MK2 Films. Available at: https://www.youtube.com/watch?v=H4w9MXDg4Cw (Accessed: 2025). </span></li>
+                <li class="bullet-1"><span>Parker, C. (1991) ‘Cold Dark Matter: An Exploded View’. </span></li>
+                <li class="bullet-2"><span>Sharpe, C.E. (2016) In the wake: On blackness and being. Durham: Duke University Press.</span></li>
+                <li class="bullet-3"><span>Young, J.E. (2006) The texture of memory: Holocaust memorials and meaning. New Haven: Yale University Press.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Function to wrap each character in a span for breaking effect
+        const listItems = document.querySelectorAll('.broken-text li');
+        listItems.forEach(item => {
+            const characters = item.innerText.split('');
+            item.innerHTML = ''; // Clear existing text
+            characters.forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                item.appendChild(span);
+            });
+        });
+    </script>
+</body>
+</html>
