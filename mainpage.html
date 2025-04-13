@@ -56,7 +56,7 @@
       margin: 0 0 30px;
     }
   
-    /* ✨ Paragraph animation + blur ✨ */
+    /* Paragraph animation */
     p {
       font-size: 1.1rem;
       line-height: 1.8;
@@ -69,6 +69,40 @@
   
     p[style*="opacity: 1"] {
       filter: blur(0);
+    }
+  
+    /* Image flicker/dust effect */
+    img.flicker-in {
+      opacity: 0;
+      transform: scale(0.92);
+      filter: blur(6px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+      animation: none;
+    }
+  
+    img.visible {
+      animation: flickerFadeIn 0.9s ease forwards;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  
+    img.hidden {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(6px);
+    }
+  
+    @keyframes flickerFadeIn {
+      0% { opacity: 0; }
+      25% { opacity: 0.25; }
+      40% { opacity: 0.1; }
+      55% { opacity: 0.4; }
+      70% { opacity: 0.2; }
+      85% { opacity: 0.7; }
+      100% { opacity: 1; }
     }
   
     img {
@@ -144,6 +178,7 @@
       transform: scale(1.1);
     }
   </style>
+  
   
   
   
@@ -244,46 +279,65 @@
   </div>
 
   <script>
-    // Floating entry/exit for <p> elements
+    // Smart paragraph + image animation on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const el = entry.target;
   
         if (entry.isIntersecting) {
-          // Animate IN from random transform
-          const x = Math.floor(Math.random() * 300 - 150); // -150 to 150px
-          const y = Math.floor(Math.random() * 300 - 150);
-          const rotate = Math.floor(Math.random() * 60 - 30); // -30deg to 30deg
-          const scale = Math.random() * 0.3 + 0.7; // 0.7 to 1.0
+          if (el.tagName === "P") {
+            // Paragraph: random float/rotate/zoom-in
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
   
-          el.style.opacity = "1";
-          el.style.filter = "blur(0)";
-          el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+            el.style.opacity = "1";
+            el.style.filter = "blur(0)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
   
-          // After a tiny delay, reset to normal position
-          setTimeout(() => {
-            el.style.transform = "translate(0px, 0px) rotate(0deg) scale(1)";
-          }, 50);
+            setTimeout(() => {
+              el.style.transform = "translate(0px, 0px) rotate(0deg) scale(1)";
+            }, 50);
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.add("visible");
+            el.classList.remove("hidden");
+          }
         } else {
-          // Animate OUT with a new random transform
-          const x = Math.floor(Math.random() * 300 - 150);
-          const y = Math.floor(Math.random() * 300 - 150);
-          const rotate = Math.floor(Math.random() * 60 - 30);
-          const scale = Math.random() * 0.3 + 0.7;
+          if (el.tagName === "P") {
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
   
-          el.style.opacity = "0";
-          el.style.filter = "blur(4px)";
-          el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+            el.style.opacity = "0";
+            el.style.filter = "blur(4px)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.remove("visible");
+            el.classList.add("hidden");
+          }
         }
       });
     }, {
-      threshold: 0.65, // Triggers when ~65% is visible
-      rootMargin: "-20% 0px -20% 0px" // Tighter window to feel more "on screen"
+      threshold: 0.65,
+      rootMargin: "-20% 0px -20% 0px"
     });
   
+    // Observe all paragraphs
     document.querySelectorAll('p').forEach(p => {
       p.style.transition = "transform 1.2s ease, opacity 1.2s ease, filter 1.2s ease";
       observer.observe(p);
+    });
+  
+    // Observe all images (except the bag trigger image)
+    document.querySelectorAll('img:not(#bag-trigger)').forEach(img => {
+      img.classList.add("flicker-in");
+      observer.observe(img);
     });
   
     // Floating shapes logic
@@ -317,7 +371,7 @@
       createRandomShape();
     }
   
-    // Bag click "suck in" animation
+    // Bag trigger animation
     const bag = document.getElementById("bag-trigger");
     const wrapper = document.getElementById("essay-wrapper");
   
@@ -346,6 +400,7 @@
       bag.onclick = () => window.location.reload();
     });
   </script>
+  
   
   
   
