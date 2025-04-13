@@ -71,52 +71,49 @@
       filter: blur(0);
     }
   
-    /* ✨ Image reverse dissolve effect ✨ */
-    img.flicker-in {
+    /* ✨ Figure (image + caption) pixelated reveal ✨ */
+    figure.pixelated-in {
       opacity: 0;
-      transform: scale(0.95);
-      filter: blur(6px);
-      transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
-      mask-image: radial-gradient(circle, #000 0%, transparent 70%);
-      mask-size: 200%;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 70%);
-      -webkit-mask-size: 200%;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
+      transform: scale(1.2);
+      filter: blur(8px) contrast(0.5) saturate(0.2);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.5s ease;
     }
   
-    img.visible {
+    figure.pixelated-in.visible {
       opacity: 1;
-      filter: blur(0);
       transform: scale(1);
-      animation: dissolveIn 1.5s ease forwards;
+      filter: blur(0px) contrast(1) saturate(1);
     }
   
-    img.hidden {
+    figure.pixelated-in.hidden {
       opacity: 0;
-      filter: blur(6px);
-      transform: scale(0.95);
-    }
-  
-    @keyframes dissolveIn {
-      0% {
-        mask-size: 200%;
-        -webkit-mask-size: 200%;
-      }
-      100% {
-        mask-size: 20%;
-        -webkit-mask-size: 20%;
-      }
+      transform: scale(1.1);
+      filter: blur(10px) contrast(0.3) saturate(0);
     }
   
     img {
       display: block;
-      margin: 40px auto;
-      max-width: 90%;
+      max-width: 100%;
       height: auto;
       border: 1px solid #333;
+      margin: 0 auto;
+    }
+  
+    figure {
+      margin: 40px auto;
+      max-width: 90%;
+      text-align: center;
+    }
+  
+    figcaption {
+      font-size: 0.85rem;
+      color: #ccc;
+      margin-top: 8px;
+      line-height: 1.4;
+      font-style: italic;
     }
   
     .floating-shapes-container {
@@ -189,6 +186,8 @@
   
   
   
+  
+  
 </head>
 <body>
   <div class="floating-shapes-container" id="shapes"></div>
@@ -212,10 +211,19 @@
         <p>Monuments are commonly defined as ‘statues, buildings, or other structures to commemorate notable persons or events.’ (Krasny, 2023) Yet, as Françoise Vergès posits, ‘monuments are just the result of political choices that testify to what the powers that be value and the memory they want to stage. They are the result of decisions that impose on the public landscape a narrative, personalities, and aesthetics. None of it is neutral.’ (Grace quoting Vergès, 2023) In practice, the ability to erect and maintain monuments has largely rested with those in positions of power which in turn reinforces hegemonic narratives and institutional authority. As Brighenti (Brighenti, 2010) explains, the ‘term monument derives from the Latin verb <i>admŏnĕo -ēre</i>, “to admonish.”’ The monument not only remembers—it instructs. It warns, disciplines, and affirms. Thus, monuments, especially those placed in public space with state approval, become sites where state power is exercised to privilege singular historical narratives and norms. </p>
         <p>The contemporary architectural theorist, Elke Krasny, whose work focuses on the politics of remembrance, challenges the assumed benevolence of such memory projects and asks us instead to consider the human cost. She provocatively asks, ‘how could thinking with care lead to understanding as well as resistance and refusal to damage to the public by cultural property, harm by monuments and sites?’—a reversal of the protective logic found in The Hague’s Convention for the Protection of Cultural Property that aims to defend cultural property (e.g. monuments) from human harm. (Krasny, 2023) Her work reorients our understanding of memorial harm: not simply in what is forgotten or destroyed, but in what is forcibly remembered, as monuments shift from passive markers of memory to active agents of power—imposing narratives, inflicting spatial harm, and casting the public as subjects acted upon. </p>
         <p>Consider, for instance, the former placement of the Colossal Statue of Ramesses II in Cairo’s Midan Ramses Square (prior to its relocation to the Grand Egyptian Museum). While the statue itself holds deep religious, cultural, and spiritual significance, its positioning in the square created physical risks for individuals and disrupted the communal flow of the urban environment. Visitors, drawn to this imposing object of significance, were forced to cross heavily trafficked roads to access the monument, endangering their own safety and contributing to increased congestion and irregular vehicular circulation. Here we have an example of what Krasny would call cultural property inadvertently causing spatial harm to the public. </p>
+    <figure>
         <img src="Rameses.png" alt="View of Ramses Square a few years after the Statue of Ramesses II was erected">
+        <figcaption>View of Ramses Square a few years after the Statue of Ramesses II was erected</figcaption>
+</figure>
         <p>Another, more ethically charged, example of damage to the public by cultural property is the statue of English merchant Edward Colston in Bristol, UK—one of many monuments commemorating colonial-era businessmen. Colston, memorialized for his philanthropic contributions to education and public works, was also a central figure in the transatlantic slave trade. (Gayle, 2022) Erected in 1895, the statue presented a sanitized narrative of success, devoid of critique or acknowledgment of the immense suffering tied to the accumulation of his wealth. It bore all the hallmarks of traditional monumentality: grandeur, central public placement, elevation, permanence, the heroic singular figure, and reverent inscription. As Krasny might argue, such a monument inflicts harm by endorsing, through memorialization, an ethical framework that privileges capitalist heroism over historical accountability. Its relationship to temporality assumes, she would say, a “production of permanency” (Krasny, 2023) imagining the commemoration of the past as future by determining ‘how to define the future of memory.’ (Krasny, 2023) The statue was, in fact, toppled in 2020 during the Black Lives Matter protests by self-proclaimed anti-racist campaigners. Though initially charged with criminal damage, the campaigners were acquitted by a jury of their peers in a vote of eleven to one, confirming, according to one Labour MP, the shared public view that ‘the real crime was the fact the statue was still there when protesters pulled it down.’ (Gayle, 2022) The Colston statue did not merely remember—it institutionalized the acceptance of violence, embedding it into the ethical fabric of public space and projecting a state-sanctioned narrative in which personal success eclipses the atrocities committed in its pursuit, a narrative that seems incongruent with the times. </p>
+    <figure>
         <img src="Colston Statue.jpg" alt="The statue in 2019">
-        <img src="Colston Toppled.webp" alt="The statue of the slave trader Edward Colston falling into the water on Sunday after protesters in Bristol, England, pulled it down">
+        <figcaption>The statue in 2019</figcaption>
+</figure>
+<figure>        
+<img src="Colston Toppled.webp" alt="The statue of the slave trader Edward Colston falling into the water on Sunday after protesters in Bristol, England, pulled it down">
+        <figcaption>The statue of the slave trader Edward Colston falling into the water on Sunday after protesters in Bristol, England, pulled it down</figcaption>
+    </figure>
         <p>Charlotte Grace, a contemporary theorist focusing on the sociospatial dimensions of identity and empire (Royal College of Art, no date), builds on the critique of traditional monumentality by deconstructing it through the lens of ceremony, introducing a critical alternative to static commemoration. For Grace, conventional monuments fail precisely because they are disconnected from lived experience—they are static, distanced, and alienating. (Grace, 2023) In contrast, she defines ceremony as a ‘spatiotemporal process involving embodied acts of commemoration, abstraction, reflection and/or transformation to ascribe and reassert political, cultural, and/or spiritual value.’ (Grace, 2023) Ceremonial practices, in this sense, have the potential to reanimate space, integrating memory into the rhythms of daily life. Quoting anthropologist Rachel Jones, Grace notes that such rituals create “sacred architecture” (Grace quoting Jones, 2023)—spaces of transformation rather than fixation—echoing Silvia Federici’s claim that, ‘transformative powers stem from the ability to appropriate spaces.’ (Grace quoting Federici, 2023) The Colston statue, fixed in its relation to the public since 1895, exemplifies the failure of traditional monumentality to evolve alongside public ethics. It had not adapted in ways that allow communities to meaningfully reassess or reassert political or cultural value, and thus failed to provide what Grace calls, ‘useable, meaningful space for the living.’ (Grace, 2023) One can imagine, instead, a commemorative ceremony at the statue’s original site in Bristol—one that may have begun in 1895 to honor Colston’s philanthropic contributions but, over the course of a century, evolved to incorporate broader public reckonings with the transatlantic slave trade. Such a ceremony would continue today not as fixed celebration, but as a dynamic, ethical act of remembrance for the dead and reflection for the living. </p>
         <p>Ultimately, the fraught nature of traditional monumentality—with its entanglement with power, spatial and temporal concerns, and ethical omissions—demands a radical reimagining of how we memorialize trauma and honor loss. Krasny and Grace push us to rethink monumentality—as active participatory practices that operate across space and time, center changing dynamic communal needs, and orient toward transformation rather than closure. In a context like Gaza, where space is hyper-scarce, continually ruptured, and subject to cycles of destruction, and where power already feels outside the grasp of everyday Gazans and struggles for national sovereignty persist—this critique becomes especially urgent. Perhaps, memorialization could become a collective, iterative act of picking up the rubble and rebuilding the unbuilt environment, a ceremony where remembrance emerges through participation and care. </p>
             </div>
@@ -227,8 +235,11 @@
         <p>For Sharpe, memory operates as a continuous, disruptive force in the lives of those who endure trauma. In her formulation, the wake is not a static repository of the past; rather, it is an ongoing state. This definition underscores that the wake is a lived condition, one in which trauma, loss, and the residue of historical violence are not confined to a completed moment but perpetually rupture the present. As she articulates, ‘in the wake, the past that is not the past reappears, always, to rupture the present.’ (Sharpe, 2016) This assertion positions memory as an active, destabilizing force—one that defies neatly encapsulating trauma and insists on its continual rearticulation. The temporal thread of monumentality and memory that Krasny and Grace highlight reemerges, emphasizing this cyclical liminality of memory and monument that resist closure by traditional monumentality. The continued existence of the Colston statue up until 2020, without any acknowledgement of his explicit ties to the slave trade, is explicit evidence of this continued rupture of trauma embedded in public space: the state-approved memorialization of a slave trader actively contributing to the production of the wake through time. In contrast to static memorials that risk attempting to complete history, the call to “stay in the wake” (Sharpe, 2016) is an invitation to engage in ongoing wake-work—a process of collective remembrance that remains perpetually open to reinterpretation and resistance. </p>
         <p>Moreover, Sharpe emphasizes that wake-work is not passive reflection but, ‘important work of sitting (together) in the pain and sorrow of death as a way of marking, remembering, and celebrating a life.’ (Sharpe, 2016) This perspective invites us to reconceive memorialization as a communal, iterative process that resists the closure and finality imposed by traditional monuments. Instead of seeking to solidify the past into a finished object, wake-work requires that thinking and care remain active—perpetually aware of the ruptures that define lived experience. In the example of Colston, the wake-work is all the conscious work that surrounds the toppling of the statue: the conversations beforehand, the complaints to the council, the public letters, the public demolition, and the continuing conversation of what should take its place. In this way, the wake becomes not a moment of closure but a space of conscious engagement, echoing Halbwachs’s insight that collective memory is ‘an act of recollection’ (Halbwachs, 2022) that is continuously remade by communal practices. </p>
         <p>Sharpe’s concept of the wake offers a profoundly resonant framework for thinking about life in Gaza—not as a place marked by past trauma alone, but as a space actively and perpetually shaped by the ongoing churn of state violence, racism, and settler colonialism. Gaza is not merely in ruin; it is in the wake. On its surface, the current state of Gaza’s urban fabric is that of a city violently churned, disrupted, and dismembered—its neighborhoods overturned by the engine of the Israeli state and enabled by global complicity. The visual juxtaposition of the below two images—one of Gaza’s leveled cityscape and one of a turbulent wake—illuminates this connection with arresting clarity. Like the disrupted waters left behind by a passing slave ship, Gaza bears the markers of a force that has not only passed through, but continues to structure the conditions of life and survival. The image of Gaza is not just evidence of destruction, but a visual representation of Sharpe’s wake: a place caught in the ongoing force of trauma and a space in which wake-work becomes both necessary and urgent. </p>
-        <img src="Wake.png" alt="Wake created in the water by a boat">
-        <img src="displaced pal.webp" alt="Displaced Palestinians returning to the war-devastated Jabaliya refugee camp">
+    <figure>
+        <img src="Full Wake.png" alt="Wake created in the water by a boat">
+        <figcaption>Left: Displaced Palestinians returning to the war-devastated Jabaliya refugee camp; Right: Wake created in the water by a boat</figcaption>
+    </figure>
+    
         <p>Applying Sharpe’s wake-work to Gaza offers not only a mode of comparison and mourning, but also a methodology of resistance. As Donna Haraway writes in <i>Staying with the Trouble: Making Kin in the Chthulucene</i>, we must remain with the complexity of crisis and grief—not seeking resolution, but forging kinship, care, and meaning in the midst of ongoing devastation (Haraway, 2016). In this sense, <i>staying in the rubble</i> becomes both an ethical position and a political act: a refusal to abandon the present, a commitment to wake-work in the rubble. To stay in the wake is to refuse the closure offered by traditional memorialization, insisting instead on memory as an ongoing act—lived and fragmented. In Gaza, where trauma is not past but ruptures recurring in the present as explosions, occupation, and suffering, the wake is not metaphor—it is material. It is the churned cityscape, the dislocated bodies, the recurring and recurring and recurring loss. The wake here asks us not to move past, but to practice presence within absence. </p>
         <p> ‘How does one memorialize that which is still unfolding?’ (Sharpe, 2016) What kind of memorial practice can emerge in a space where the violence has not ended, and the future remains fluid? This condition undermines the very foundations of traditional monumentality, where no monument can hold the totality of loss, where resources and time cannot be spared to erect monuments, and where permanence itself is illusory. In such a setting, the idea of installing fixed structures becomes not only impractical but ethically fraught. Traditional monuments, often predicated on closure and spatial dominance falter in this face of instability, scarcity, and the risk of becoming future targets. </p>
         <p>So, what is the wake-work of monumentality in Gaza? How can we sit together, in great loss, to reimagine memorial practice that can evolve in tandem with the lived realities of those it seeks to serve? Sharpe’s work challenges us to recognize that memory, when left to static, traditional monumentality, fails to capture the dynamic, often painful, reality of survival under continuous trauma. Wake-work invites a rethinking of monumentality as a collective, iterative process that aligns with Grace’s notion of ceremony as a spatiotemporal act of remembrance and echoes Krasny’s call to design practices of care and protection rather than domination. To engage in wake-work in Gaza, then, is to participate in a kind of political and ethical storytelling—one that resists state-imposed narratives and instead builds memory through ongoing gestures—assembling and reassembling meaning, community, and space from the rubble; as Ursula K. Le Guin would posit: a collective act of gathering, of telling stories that hold, rather than conquer. </p>
@@ -243,9 +254,15 @@
         <p>Here, Le Guin’s version of wake-work feminizes <i>the</i> story by turning the hero from phallic weapon to vaginal holder—from a figure of conquest to a symbol of receptivity and continuity. Through Le Guin’s narration, we place ourselves in the wake as the carrier: the body that holds not only the continuation of our stories, but also the silenced stories of those cast overboard during the Atlantic slave trade. In the case of the Colston statue, it is the harbor itself that becomes the carrier bag—containing not only the toppled monument, but the rope that pulled it down, the communal force behind the act, and the protest that reclaims space and story. This is wake-work as resistance and narrative repair. Le Guin’s metaphor centers the impulse to collect and preserve what is valuable: the remnants of life gathered from the rubble, transformed into vessels of memory and meaning. In doing so, she not only reorients the narrative away from the hero’s arc, but directly challenges the aggressive, conquest-driven frameworks that have long defined our traditions of storytelling, memorialization, and monumentality and that have left Gaza in the wake. </p>
         <p>Le Guin’s critique further extends to our relationship with time and narration. She challenges the linear, progressive ‘time’s-killing-arrow mode of the Techno-Heroic’ (Le Guin, 1988) (another phallic thing) and calls for a narrative that resembles ‘a sac’ (Le Guin, 1988), some sort of round thing that denotes cycles and messiness of jumbled importance. This non-linear understanding of narrative echoes Sharpe’s notion of staying in the wake and is a direct response to Krasny’s critique of the monument’s production of permanence, where time is not a linear progression but an ongoing, rupturing process of change. In these frameworks, the emphasis is on the process of continual reassembly, cycles, fluidity rather than on achieving a fixed, monumental end state. This rethinking is crucial for Gaza, where the process of remembering and rebuilding in the rupture is itself a form of resistance against erasure, a powerful narrative. </p>
         <p>Like Le Guin’s carrier bag, which gathers diverse fragments of experience, wake-work in Gaza becomes a practice of assembling and reassembling memory—not to build a monument, but to resist the heroic, state-authored, patriarchal, hegemonic narrative through acts of care and continuity. In the context of Gaza, where people carry literal sacks that hold their objects of importance and fragments of daily survival, where sheltering, gathering, rebuilding, and mourning is the cycle of memory, Le Guin’s theory offers not just a narrative alternative, but a model for ethical memorialization. It is not the monument we need, but the vessel. </p>
+    <figure>
         <img src="Gaza Bag 2.jpg" alt="Palestinians carry their belongings as they prepare to flee Rafah, Gaza">
-        <img src="Gaza Bag 3.avif" alt="Displaced Palestinians carry their belongings as they walk amid the devastation upon their return to central Rafah in the southern Gaza Strip">
-        <p>Traditional memorial forms privilege static, imposing structures—phallic echoes of conquest and permanence. But Le Guin’s theory reorients us toward a different mode: one that collects small, ordinary elements to tell a shared, resilient story. This resonates deeply in Gaza, where people rummage through rubble not only to survive, but to reclaim meaning. Poignantly, her acknowledgment that, ‘home [is] another, larger kind of pouch or bag, a container for people’ (Le Guin, 1988) positions the home as a sacred container—a space where personal and communal narratives are nurtured and sustained. For Gaza, a landscape where the urban fabric is reduced to rubble and loss, this idea offers a powerful vision of non-traditional memorialization. Here, rebuilding becomes an act of assembling the sacred carrier-bag-home anew, collecting fragments of destruction to reconstruct both the physical space and the stories contained within, rebuilding one of the foundational carrier bags. </p>
+        <figcaption>Palestinians carry their belongings as they prepare to flee Rafah, Gaza</figcaption>
+    </figure>
+<figure>
+    <img src="Gaza Bag 3.avif" alt="Displaced Palestinians carry their belongings as they walk amid the devastation upon their return to central Rafah in the southern Gaza Strip">
+    <figcaption>Displaced Palestinians carry their belongings as they walk amid the devastation upon their return to central Rafah in the southern Gaza Strip</figcaption>
+</figure>
+    <p>Traditional memorial forms privilege static, imposing structures—phallic echoes of conquest and permanence. But Le Guin’s theory reorients us toward a different mode: one that collects small, ordinary elements to tell a shared, resilient story. This resonates deeply in Gaza, where people rummage through rubble not only to survive, but to reclaim meaning. Poignantly, her acknowledgment that, ‘home [is] another, larger kind of pouch or bag, a container for people’ (Le Guin, 1988) positions the home as a sacred container—a space where personal and communal narratives are nurtured and sustained. For Gaza, a landscape where the urban fabric is reduced to rubble and loss, this idea offers a powerful vision of non-traditional memorialization. Here, rebuilding becomes an act of assembling the sacred carrier-bag-home anew, collecting fragments of destruction to reconstruct both the physical space and the stories contained within, rebuilding one of the foundational carrier bags. </p>
         <p>In this light, Le Guin’s <i>Carrier Bag Theory</i> becomes a model for <i>living memorialization</i>: not as a fixed product, but as a continuous process, adaptable, dispersed, and grounded in the daily rhythms of communal life. Rather than a fixed structure, it is a narrative practice remade continuously through shared labor, where rebuilding is not just architectural, but narrative; not just practical, but sacred. What Grace might call narrativized, ceremonial, wake-work centers not conquest but care—feeding, holding, mourning, enduring. These quiet rituals preserve collective memory and affirm survival in the face of erasure. And through this form, Gaza’s future memorials may not rise from polished stone or cast metal, but reassemble themselves from rubble—carried forward not only as objects, but as practices of insistence, resilience, and life. </p>
         
         </div>
@@ -255,10 +272,19 @@
               <blockquote>Suspended Rupture </blockquote>
         <p>Artist Cornelia Parker visualizes explosion, suspension, trauma, and the latent potential of things. Her work stages rupture—and then holds it open. Using Parker’s work as a guide, a visual parallel for Gaza’s current condition, we can imagine rebuilding Gaza from the rubble: not by restoring what once was, but by reassembling fragments into a sculptural, suspended language of memory and rebirth. </p>
         <p>In her piece <i>Cold Dark Matter: An Exploded View (1991) </i>, Parker collaborated with the British Army to detonate a garden shed and then meticulously suspended the aftermath mid-air. (Mukherjee and Ghosh 2023) On the surface, the parallels between her work and Gaza are stark: explosions, fragmentation, and destruction. But the work also reveals deeper resonances. <i>Cold Dark Matter</i> unfolds space and time in a way that mirrors the unmaking of Gaza’s urban landscape—a place that is ‘shift[ing], flatten[ing], stretching,’ (Mukherjee and Ghosh 2023) undergoing continuous disfiguration and rupture. Parker’s work does not aim to restore form, but to reimagine it. Quoted talking about the original instillation of <i>Cold Dark Matter</i> at the Chisenhale Gallery, Parker noted that her work was inspired by the cartoon deaths of Road Runner and Tom and Jerry where they would change shape before, ‘reconstituting themselves.’ (Mukherjee and Ghosh 2023) Parker explicitly says, ‘I resurrect things that have been killed off…My work is about the potential of materials - even when it looks like they’ve lost all possibilities.’ (Parker, no date) Gaza’s present condition—its cartoonishly distorted urban fabric, imploded into near-unrecognizability—hovers in a similar suspended moment. It hangs in its own exploded form, not yet resolved, but with the possibility of rebirth. Destruction, in Parker’s hands, is not an end, but a precondition for reconstitution. </p>
+    <figure>
         <img src="cdm.png" alt="Cold Dark Matter: An Exploded View, 1991">
+        <figcaption>Cold Dark Matter: An Exploded View, 1991</figcaption>
+    </figure>
+<figure>
         <img src="ruined home.webp" alt="People visiting their ruined home in Jabaliya">
+        <figcaption>People visiting their ruined home in Jabaliya</figcaption>
+    </figure>
         <p>The immersive presentation of her work further amplifies its resonance with Gaza. The fragments are illuminated from within, casting long shadows across the gallery space—an interplay of light and darkness that expands the temporal register of the piece. The installation appears frozen and in motion, past and present collapsing into one suspended moment. This collapsing of time is precisely how Sharpe theorizes that trauma is not bound to a single historical event but exists in continual rupture. It is no surprise, therefore, that Parker’s <i>Hanging Fire (Suspected Arson) </i> graces the cover of Sharpe’s <i>In the Wake: On Blackness and Being</i>. Both works are concerned with holding trauma, time, and possibility in tension, echoing Krasny’s notion of living “between tenses,” (Krasny, 2023) where memory operates across past, present, and future at once. </p>
+    <figure>
         <img src="Sharpe Book.jpg" alt="In the Wake: On Blackness and Being">
+        <figcaption>In the Wake: On Blackness and Being</figcaption>
+    </figure>
         <p>Cornelia Parker disassembles—literally—the expectation of a singular, cohesive object and instead offers fragments held in suspension, capturing the disruptive, unresolved presence of the past. Her installations resist fixed narrative; there is no hero, no singular subject, no prescribed meaning. Rather, Parker’s work is what she calls ‘non-essentially pluralistic (Mukherjee and Ghosh 2023): open-ended, refracted through different angles and reference points, inviting multiple interpretations. This aesthetic of fragmentation functions as a critique of traditional, heroic memorials—those that claim to fix memory into a single monumental form. Like Le Guin’s carrier bag, Parker’s work collects and holds; it does not conquer or conclude. Parker offers a visual corollary to Le Guin’s narrative vessel: an immersive, fragmented architecture of memory that refuses finality, embraces multiplicity, and gathers what has been scattered, aligning with the lived realities of Gaza. </p>
         
         </div>
@@ -277,8 +303,10 @@
         <p>This reimagined memorialization is a call to design from within the wound—not to erase it, but to illuminate it. It is a refusal to let history be written by conquest. It is the ethical insistence that Gaza’s losses are not merely numbers, but narratives. </p>
         <p>To memorialize Gaza is to gather in the rubble with intention—to carry forward fragments of the past and build a future rooted in freedom. It is to recognize that in the wake of catastrophe, in the flattened cityscape, lies not the end of memory, but its beginning. In the rubble is a story not yet finished. And in the hands of those who return to it—sifting, collecting, rebuilding—we find the future shape of remembrance: unfinished, unresolved, but insistent on life. </p>
         <p>As Sharpe reminds us, ‘if we are lucky, the knowledge of this positioning avails us particular ways of re/seeing, re/inhabiting, and reimagining the world.’ (Sharpe, 2016) </p>
-        <img src="Gaza Home.avif" alt="The wreckage of homes, families and traditions mark Ramadan in Gaza">
         
+    <figure>        <img src="Gaza Home.avif" alt="The wreckage of homes, families and traditions mark Ramadan in Gaza">
+        <figcaption>The wreckage of homes, families and traditions mark Ramadan in Gaza</figcaption>
+    </figure>
         
         <a class="bibliography-link" href="bibliography.html">Bibliography</a>
 
@@ -306,7 +334,7 @@
             }, 50);
           }
   
-          if (el.tagName === "IMG") {
+          if (el.tagName === "FIGURE") {
             el.classList.add("visible");
             el.classList.remove("hidden");
           }
@@ -322,7 +350,7 @@
             el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
           }
   
-          if (el.tagName === "IMG") {
+          if (el.tagName === "FIGURE") {
             el.classList.remove("visible");
             el.classList.add("hidden");
           }
@@ -338,12 +366,13 @@
       observer.observe(p);
     });
   
-    document.querySelectorAll('img:not(#bag-trigger)').forEach(img => {
-      img.classList.add("flicker-in");
-      observer.observe(img);
+    document.querySelectorAll('figure').forEach(fig => {
+      fig.classList.add("pixelated-in");
+      fig.style.transitionDelay = `${Math.random() * 0.3}s`; // Optional stagger
+      observer.observe(fig);
     });
   
-    // Floating shape animation
+    // Floating shapes
     function createRandomShape() {
       const shape = document.createElement('div');
       shape.classList.add('shape');
@@ -374,7 +403,7 @@
       createRandomShape();
     }
   
-    // Bag-trigger "suck in" animation
+    // Bag trigger animation
     const bag = document.getElementById("bag-trigger");
     const wrapper = document.getElementById("essay-wrapper");
   
@@ -383,7 +412,7 @@
       const bagX = rect.left + rect.width / 2;
       const bagY = rect.top + rect.height / 2;
   
-      const allElements = wrapper.querySelectorAll("p, blockquote, img:not(#bag-trigger), h1, h2, a");
+      const allElements = wrapper.querySelectorAll("p, blockquote, figure, h1, h2, a");
   
       allElements.forEach((el, i) => {
         const elRect = el.getBoundingClientRect();
@@ -403,6 +432,8 @@
       bag.onclick = () => window.location.reload();
     });
   </script>
+  
+  
   
   
   
