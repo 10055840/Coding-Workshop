@@ -4,20 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Essay | Decentralizing Monumentality</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
   <style>
-
-#bag-trigger {
-  display: block;
-  margin: 100px auto 50px; /* Increase the bottom margin */
-  width: 200px;
-  max-width: 90%;
-  cursor: pointer;
-  z-index: 999;
-  transition: transform 0.6s ease;
-  position: relative;
-}
-
     h1 {
+      font-family: 'Rubik Dirt', cursive;
       color: #149954;
       text-align: center;
       font-size: 2.5rem;
@@ -26,7 +16,7 @@
       z-index: 10;
       margin-bottom: 20px;
     }
-
+  
     body {
       margin: 0;
       padding: 0;
@@ -35,7 +25,7 @@
       color: #fff;
       overflow-x: hidden;
     }
-
+  
     .content {
       max-width: 1000px;
       margin: 0 auto;
@@ -44,52 +34,77 @@
       z-index: 2;
       perspective: 1600px;
     }
-
+  
     h2 {
       text-align: center;
+      color: #E4312b;
       font-size: 1.6rem;
       font-weight: normal;
       margin-bottom: 40px;
       opacity: 0.8;
     }
-
+  
     .section {
       margin-bottom: 100px;
     }
-
+  
     blockquote {
+      font-family: 'Rubik Dirt', cursive;
       font-size: 1.6rem;
       color: #E4312b;
       font-style: italic;
       margin: 0 0 30px;
     }
-
+  
+    /* Paragraph animation */
     p {
       font-size: 1.1rem;
       line-height: 1.8;
-      opacity: 1;
-      transform: translateZ(0);
-      transition: all 2.5s ease-in-out;
-      will-change: transform, opacity, filter;
       margin-bottom: 30px;
-    }
-
-    p.crumble {
       opacity: 0;
-      filter: blur(8px);
-      transform: var(--crumble-transform);
-      transform-origin: center;
+      transform: translateY(30px) scale(0.9);
+      transition: transform 1.2s ease, opacity 1.2s ease, filter 1.2s ease;
+      filter: blur(4px);
     }
-
-    p.suspend.crumble {
-      opacity: 0.4;
-      filter: blur(2px);
-      transform: var(--suspend-transform);
-      position: absolute;
-      z-index: 0;
-      pointer-events: none;
+  
+    p[style*="opacity: 1"] {
+      filter: blur(0);
     }
-
+  
+    /* Image flicker/dust effect */
+    img.flicker-in {
+      opacity: 0;
+      transform: scale(0.92);
+      filter: blur(6px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+      animation: none;
+    }
+  
+    img.visible {
+      animation: flickerFadeIn 0.9s ease forwards;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  
+    img.hidden {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(6px);
+    }
+  
+    @keyframes flickerFadeIn {
+      0% { opacity: 0; }
+      25% { opacity: 0.25; }
+      40% { opacity: 0.1; }
+      55% { opacity: 0.4; }
+      70% { opacity: 0.2; }
+      85% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+  
     img {
       display: block;
       margin: 40px auto;
@@ -97,7 +112,7 @@
       height: auto;
       border: 1px solid #333;
     }
-
+  
     .floating-shapes-container {
       position: fixed;
       top: 0;
@@ -107,14 +122,14 @@
       z-index: 0;
       pointer-events: none;
     }
-
+  
     .shape {
       position: absolute;
       background-color: rgba(255, 255, 255, 0.1);
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
       animation: float 25s infinite ease-in-out;
     }
-
+  
     @keyframes float {
       0% {
         transform: translate3d(var(--start-x), var(--start-y), 0) rotate(0deg);
@@ -123,7 +138,7 @@
         transform: translate3d(var(--end-x), var(--end-y), 0) rotate(360deg);
       }
     }
-
+  
     .bibliography-link {
       text-align: center;
       display: block;
@@ -132,11 +147,11 @@
       text-decoration: none;
       font-size: 1.2rem;
     }
-
+  
     .sucked-in {
       animation: zoomToBag 10s ease-in forwards;
     }
-
+  
     @keyframes zoomToBag {
       0% {
         transform: scale(1) translate(0, 0);
@@ -147,7 +162,7 @@
         opacity: 0;
       }
     }
-
+  
     #bag-trigger {
       display: block;
       margin: 100px auto;
@@ -158,19 +173,23 @@
       transition: transform 0.6s ease;
       position: relative;
     }
-
+  
     #bag-trigger:hover {
       transform: scale(1.1);
     }
   </style>
+  
+  
+  
+  
 </head>
 <body>
   <div class="floating-shapes-container" id="shapes"></div>
 
   <div class="content" id="essay-wrapper">
-    <h1>Staying With The Rubble</h1>
+    <h1 id="animated-title">Staying With The Rubble</h1>
     <h2>Kyle Feuer</h2>
-    <a class="bibliography-link" href="bibliography.html">Bibliography</a>
+  
 
     <div class="section">
         <p>Across time, people have returned to what remains—crumbling shelter, fragments of daily life, destroyed memorabilia, broken kinship—not only to survive destruction, but to make meaning from it. Whether after flood or famine, displacement or war, we sift through what is left, searching not only for the lost but for the connective tissue between past and future. We search for something deeper—meaning, memory, a narrative to help make sense of overturned reality. We sort into piles: things to let go, things to mend, things to memorialize, and things to keep. The formalization of these piles, sometimes monuments, are often our collective attempt to narrativize what remains. They fix loss into physical form, impose memory into space, and construct continuity where rupture has occurred. But in doing so, they do not simply remember—they control what is remembered, and how. </p>
@@ -252,105 +271,138 @@
         <p>To memorialize Gaza is to gather in the rubble with intention—to carry forward fragments of the past and build a future rooted in freedom. It is to recognize that in the wake of catastrophe, in the flattened cityscape, lies not the end of memory, but its beginning. In the rubble is a story not yet finished. And in the hands of those who return to it—sifting, collecting, rebuilding—we find the future shape of remembrance: unfinished, unresolved, but insistent on life. </p>
         <p>As Sharpe reminds us, ‘if we are lucky, the knowledge of this positioning avails us particular ways of re/seeing, re/inhabiting, and reimagining the world.’ (Sharpe, 2016) </p>
         <img src="Gaza Home.avif" alt="The wreckage of homes, families and traditions mark Ramadan in Gaza">
-
+        
+        
+        <a class="bibliography-link" href="bibliography.html">Bibliography</a>
 
     <img src="frogfrog.avif" id="bag-trigger" alt="The Bag (Click to contain the essay)" />
   </div>
 
   <script>
-    const allParagraphs = document.querySelectorAll('p');
-
-    allParagraphs.forEach(p => {
-      const x = (Math.random() * 800 - 400).toFixed(1);
-      const y = (Math.random() * 600 - 300).toFixed(1);
-      const z = (Math.random() * 1600 - 800).toFixed(1);
-      const rotateX = (Math.random() * 80 - 40).toFixed(1);
-      const rotateY = (Math.random() * 80 - 40).toFixed(1);
-      const skew = (Math.random() * 40 - 20).toFixed(1);
-      const transformStr = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) skew(${skew}deg)`;
-      p.style.setProperty('--crumble-transform', transformStr);
-
-      if (Math.random() < 0.3) {
-        const suspendX = (Math.random() * window.innerWidth - window.innerWidth / 2).toFixed(1);
-        const suspendY = (Math.random() * window.innerHeight - window.innerHeight / 2).toFixed(1);
-        const suspendZ = (Math.random() * 200 - 100).toFixed(1);
-        const suspendStr = `translate3d(${suspendX}px, ${suspendY}px, ${suspendZ}px) rotateZ(${rotateY}deg)`;
-        p.style.setProperty('--suspend-transform', suspendStr);
-        p.classList.add('suspend');
-      }
-    });
-
+    // Smart paragraph + image animation on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.intersectionRatio < 0.6) {
-          entry.target.classList.add('crumble');
+        const el = entry.target;
+  
+        if (entry.isIntersecting) {
+          if (el.tagName === "P") {
+            // Paragraph: random float/rotate/zoom-in
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
+  
+            el.style.opacity = "1";
+            el.style.filter = "blur(0)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+  
+            setTimeout(() => {
+              el.style.transform = "translate(0px, 0px) rotate(0deg) scale(1)";
+            }, 50);
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.add("visible");
+            el.classList.remove("hidden");
+          }
         } else {
-          entry.target.classList.remove('crumble');
+          if (el.tagName === "P") {
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
+  
+            el.style.opacity = "0";
+            el.style.filter = "blur(4px)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.remove("visible");
+            el.classList.add("hidden");
+          }
         }
       });
     }, {
-      threshold: [0, 0.6, 1]
+      threshold: 0.65,
+      rootMargin: "-20% 0px -20% 0px"
     });
-
-    allParagraphs.forEach(p => observer.observe(p));
-
+  
+    // Observe all paragraphs
+    document.querySelectorAll('p').forEach(p => {
+      p.style.transition = "transform 1.2s ease, opacity 1.2s ease, filter 1.2s ease";
+      observer.observe(p);
+    });
+  
+    // Observe all images (except the bag trigger image)
+    document.querySelectorAll('img:not(#bag-trigger)').forEach(img => {
+      img.classList.add("flicker-in");
+      observer.observe(img);
+    });
+  
+    // Floating shapes logic
     function createRandomShape() {
       const shape = document.createElement('div');
       shape.classList.add('shape');
       const size = Math.random() * 60 + 20;
       shape.style.width = `${size}px`;
       shape.style.height = `${size}px`;
-
+  
       shape.style.clipPath = `polygon(
         ${Math.random() * 100}% ${Math.random() * 100}%,
         ${Math.random() * 100}% ${Math.random() * 100}%,
         ${Math.random() * 100}% ${Math.random() * 100}%,
-        ${Math.random() * 100}% ${Math.random() * 100}% )`;
-
+        ${Math.random() * 100}% ${Math.random() * 100}%)`;
+  
       const startX = Math.random() * window.innerWidth;
       const startY = Math.random() * window.innerHeight;
       const endX = Math.random() * window.innerWidth;
       const endY = Math.random() * window.innerHeight;
-
+  
       shape.style.setProperty('--start-x', `${startX}px`);
       shape.style.setProperty('--start-y', `${startY}px`);
       shape.style.setProperty('--end-x', `${endX}px`);
       shape.style.setProperty('--end-y', `${endY}px`);
-
+  
       document.getElementById('shapes').appendChild(shape);
     }
-
+  
     for (let i = 0; i < 40; i++) {
       createRandomShape();
     }
-
+  
+    // Bag trigger animation
     const bag = document.getElementById("bag-trigger");
     const wrapper = document.getElementById("essay-wrapper");
-
+  
     bag.addEventListener("click", () => {
       const rect = bag.getBoundingClientRect();
       const bagX = rect.left + rect.width / 2;
       const bagY = rect.top + rect.height / 2;
-
+  
       const allElements = wrapper.querySelectorAll("p, blockquote, img:not(#bag-trigger), h1, h2, a");
-
+  
       allElements.forEach((el, i) => {
         const elRect = el.getBoundingClientRect();
         const centerX = elRect.left + elRect.width / 2;
         const centerY = elRect.top + elRect.height / 2;
         const dx = bagX - centerX;
         const dy = bagY - centerY + window.innerHeight / 2;
-
+  
         el.style.setProperty('--bag-x', `${dx}px`);
         el.style.setProperty('--bag-y', `${dy}px`);
-
+  
         setTimeout(() => {
           el.classList.add("sucked-in");
         }, i * 50);
       });
-
+  
       bag.onclick = () => window.location.reload();
     });
   </script>
+  
+  
+  
+  
 </body>
 </html>
