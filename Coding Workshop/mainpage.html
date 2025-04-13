@@ -4,7 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Essay | Decentralizing Monumentality</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
   <style>
+    h1 {
+      font-family: 'Rubik Dirt', cursive;
+      color: #149954;
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 0;
+      padding: 1rem 0;
+      z-index: 10;
+      margin-bottom: 20px;
+    }
+  
     body {
       margin: 0;
       padding: 0;
@@ -13,7 +25,7 @@
       color: #fff;
       overflow-x: hidden;
     }
-
+  
     .content {
       max-width: 1000px;
       margin: 0 auto;
@@ -22,59 +34,77 @@
       z-index: 2;
       perspective: 1600px;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  
     h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: normal;
-  margin-bottom: 40px;
-  opacity: 0.8;
-}
-
-
+      text-align: center;
+      color: #E4312b;
+      font-size: 1.6rem;
+      font-weight: normal;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+  
     .section {
       margin-bottom: 100px;
     }
-
+  
     blockquote {
+      font-family: 'Rubik Dirt', cursive;
       font-size: 1.6rem;
-      color: #e74c3c;
+      color: #E4312b;
       font-style: italic;
       margin: 0 0 30px;
     }
-
+  
+    /* Paragraph animation */
     p {
       font-size: 1.1rem;
       line-height: 1.8;
-      opacity: 1;
-      transform: translateZ(0);
-      transition: all 2.5s ease-in-out;
-      will-change: transform, opacity, filter;
       margin-bottom: 30px;
-    }
-
-    p.crumble {
       opacity: 0;
-      filter: blur(8px);
-      transform: var(--crumble-transform);
-      transform-origin: center;
+      transform: translateY(30px) scale(0.9);
+      transition: transform 1.2s ease, opacity 1.2s ease, filter 1.2s ease;
+      filter: blur(4px);
     }
-
-    /* Suspended variant */
-    p.suspend.crumble {
-      opacity: 0.4;
-      filter: blur(2px);
-      transform: var(--suspend-transform);
-      position: absolute;
-      z-index: 0;
-      pointer-events: none;
+  
+    p[style*="opacity: 1"] {
+      filter: blur(0);
     }
-
+  
+    /* Image flicker/dust effect */
+    img.flicker-in {
+      opacity: 0;
+      transform: scale(0.92);
+      filter: blur(6px);
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+      animation: none;
+    }
+  
+    img.visible {
+      animation: flickerFadeIn 0.9s ease forwards;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  
+    img.hidden {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(6px);
+    }
+  
+    @keyframes flickerFadeIn {
+      0% { opacity: 0; }
+      25% { opacity: 0.25; }
+      40% { opacity: 0.1; }
+      55% { opacity: 0.4; }
+      70% { opacity: 0.2; }
+      85% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+  
     img {
       display: block;
       margin: 40px auto;
@@ -82,7 +112,7 @@
       height: auto;
       border: 1px solid #333;
     }
-
+  
     .floating-shapes-container {
       position: fixed;
       top: 0;
@@ -92,14 +122,14 @@
       z-index: 0;
       pointer-events: none;
     }
-
+  
     .shape {
       position: absolute;
       background-color: rgba(255, 255, 255, 0.1);
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
       animation: float 25s infinite ease-in-out;
     }
-
+  
     @keyframes float {
       0% {
         transform: translate3d(var(--start-x), var(--start-y), 0) rotate(0deg);
@@ -108,28 +138,59 @@
         transform: translate3d(var(--end-x), var(--end-y), 0) rotate(360deg);
       }
     }
-
+  
     .bibliography-link {
       text-align: center;
       display: block;
-      color: red;
+      color: #E4312b;
       margin: 20px auto 60px;
       text-decoration: none;
       font-size: 1.2rem;
     }
+  
+    .sucked-in {
+      animation: zoomToBag 10s ease-in forwards;
+    }
+  
+    @keyframes zoomToBag {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.1) translate(var(--bag-x), var(--bag-y)) translateY(100vh);
+        opacity: 0;
+      }
+    }
+  
+    #bag-trigger {
+      display: block;
+      margin: 100px auto;
+      width: 200px;
+      max-width: 90%;
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+  
+    #bag-trigger:hover {
+      transform: scale(1.1);
+    }
   </style>
+  
+  
+  
+  
 </head>
 <body>
-
-  <!-- Floating background rubble -->
   <div class="floating-shapes-container" id="shapes"></div>
 
-  <div class="content">
-    <h1>Staying With The Rubble</h1>
+  <div class="content" id="essay-wrapper">
+    <h1 id="animated-title">Staying With The Rubble</h1>
     <h2>Kyle Feuer</h2>
-    <a class="bibliography-link" href="bibliography.html">Bibliography</a>
+  
 
-    <!-- Sections of Essay -->
     <div class="section">
         <p>Across time, people have returned to what remains—crumbling shelter, fragments of daily life, destroyed memorabilia, broken kinship—not only to survive destruction, but to make meaning from it. Whether after flood or famine, displacement or war, we sift through what is left, searching not only for the lost but for the connective tissue between past and future. We search for something deeper—meaning, memory, a narrative to help make sense of overturned reality. We sort into piles: things to let go, things to mend, things to memorialize, and things to keep. The formalization of these piles, sometimes monuments, are often our collective attempt to narrativize what remains. They fix loss into physical form, impose memory into space, and construct continuity where rupture has occurred. But in doing so, they do not simply remember—they control what is remembered, and how. </p>
         <p>Theorists have long examined the intersection and implications of memory, power, and spatial ethics embedded in monumentality. From Alois Riegl’s 1903 foundational exploration of the commemorative value of monuments (Riegl, 1982) to the utopian 1943 <i>Nine Points on Monumentality</i> by J. L. Sert, F. Léger, and S. Giedion (Sert, Léger, Giedion, 1943), early modern theorists sought to reconcile permanence with public meaning. Mid-century thinkers such as Lewis Mumford (Mumford, 1961), Michel Foucault (Foucault, 1986), and Henri Lefebvre (Lefebvre, 2009), whether directly addressing monumentality or developing broader spatial theory, examined how architecture and urban space reinforce authority, condition social control and collective behavior, and encode ideology within the city. Contemporary theorists such as Michael Sorkin (Sorkin, 1994), Eyal Weizman (Husain and Weizman, 2024), and Dolores Hayden (Hayden, 1995) extend these critiques by exposing how monuments and spatial design can erase contested histories and advocate instead for practices that confront occupation and foreground ethical memory. </p>
@@ -159,7 +220,7 @@
         <p>For Sharpe, memory operates as a continuous, disruptive force in the lives of those who endure trauma. In her formulation, the wake is not a static repository of the past; rather, it is an ongoing state. This definition underscores that the wake is a lived condition, one in which trauma, loss, and the residue of historical violence are not confined to a completed moment but perpetually rupture the present. As she articulates, ‘in the wake, the past that is not the past reappears, always, to rupture the present.’ (Sharpe, 2016) This assertion positions memory as an active, destabilizing force—one that defies neatly encapsulating trauma and insists on its continual rearticulation. The temporal thread of monumentality and memory that Krasny and Grace highlight reemerges, emphasizing this cyclical liminality of memory and monument that resist closure by traditional monumentality. The continued existence of the Colston statue up until 2020, without any acknowledgement of his explicit ties to the slave trade, is explicit evidence of this continued rupture of trauma embedded in public space: the state-approved memorialization of a slave trader actively contributing to the production of the wake through time. In contrast to static memorials that risk attempting to complete history, the call to “stay in the wake” (Sharpe, 2016) is an invitation to engage in ongoing wake-work—a process of collective remembrance that remains perpetually open to reinterpretation and resistance. </p>
         <p>Moreover, Sharpe emphasizes that wake-work is not passive reflection but, ‘important work of sitting (together) in the pain and sorrow of death as a way of marking, remembering, and celebrating a life.’ (Sharpe, 2016) This perspective invites us to reconceive memorialization as a communal, iterative process that resists the closure and finality imposed by traditional monuments. Instead of seeking to solidify the past into a finished object, wake-work requires that thinking and care remain active—perpetually aware of the ruptures that define lived experience. In the example of Colston, the wake-work is all the conscious work that surrounds the toppling of the statue: the conversations beforehand, the complaints to the council, the public letters, the public demolition, and the continuing conversation of what should take its place. In this way, the wake becomes not a moment of closure but a space of conscious engagement, echoing Halbwachs’s insight that collective memory is ‘an act of recollection’ (Halbwachs, 2022) that is continuously remade by communal practices. </p>
         <p>Sharpe’s concept of the wake offers a profoundly resonant framework for thinking about life in Gaza—not as a place marked by past trauma alone, but as a space actively and perpetually shaped by the ongoing churn of state violence, racism, and settler colonialism. Gaza is not merely in ruin; it is in the wake. On its surface, the current state of Gaza’s urban fabric is that of a city violently churned, disrupted, and dismembered—its neighborhoods overturned by the engine of the Israeli state and enabled by global complicity. The visual juxtaposition of the below two images—one of Gaza’s leveled cityscape and one of a turbulent wake—illuminates this connection with arresting clarity. Like the disrupted waters left behind by a passing slave ship, Gaza bears the markers of a force that has not only passed through, but continues to structure the conditions of life and survival. The image of Gaza is not just evidence of destruction, but a visual representation of Sharpe’s wake: a place caught in the ongoing force of trauma and a space in which wake-work becomes both necessary and urgent. </p>
-        <img src="Wake.psd" alt="Wake created in the water by a boat">
+        <img src="Wake.png" alt="Wake created in the water by a boat">
         <img src="displaced pal.webp" alt="Displaced Palestinians returning to the war-devastated Jabaliya refugee camp">
         <p>Applying Sharpe’s wake-work to Gaza offers not only a mode of comparison and mourning, but also a methodology of resistance. As Donna Haraway writes in <i>Staying with the Trouble: Making Kin in the Chthulucene</i>, we must remain with the complexity of crisis and grief—not seeking resolution, but forging kinship, care, and meaning in the midst of ongoing devastation (Haraway, 2016). In this sense, <i>staying in the rubble</i> becomes both an ethical position and a political act: a refusal to abandon the present, a commitment to wake-work in the rubble. To stay in the wake is to refuse the closure offered by traditional memorialization, insisting instead on memory as an ongoing act—lived and fragmented. In Gaza, where trauma is not past but ruptures recurring in the present as explosions, occupation, and suffering, the wake is not metaphor—it is material. It is the churned cityscape, the dislocated bodies, the recurring and recurring and recurring loss. The wake here asks us not to move past, but to practice presence within absence. </p>
         <p> ‘How does one memorialize that which is still unfolding?’ (Sharpe, 2016) What kind of memorial practice can emerge in a space where the violence has not ended, and the future remains fluid? This condition undermines the very foundations of traditional monumentality, where no monument can hold the totality of loss, where resources and time cannot be spared to erect monuments, and where permanence itself is illusory. In such a setting, the idea of installing fixed structures becomes not only impractical but ethically fraught. Traditional monuments, often predicated on closure and spatial dominance falter in this face of instability, scarcity, and the risk of becoming future targets. </p>
@@ -212,84 +273,136 @@
         <img src="Gaza Home.avif" alt="The wreckage of homes, families and traditions mark Ramadan in Gaza">
         
         
-        
-        
-        
-        
-        
-        
+        <a class="bibliography-link" href="bibliography.html">Bibliography</a>
+
+    <img src="frogfrog.avif" id="bag-trigger" alt="The Bag (Click to contain the essay)" />
   </div>
 
   <script>
-    const allParagraphs = document.querySelectorAll('p');
-
-    allParagraphs.forEach(p => {
-      // Assign a crumble trajectory
-      const x = (Math.random() * 800 - 400).toFixed(1);
-      const y = (Math.random() * 600 - 300).toFixed(1);
-      const z = (Math.random() * 1600 - 800).toFixed(1);
-      const rotateX = (Math.random() * 80 - 40).toFixed(1);
-      const rotateY = (Math.random() * 80 - 40).toFixed(1);
-      const skew = (Math.random() * 40 - 20).toFixed(1);
-      const transformStr = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) skew(${skew}deg)`;
-      p.style.setProperty('--crumble-transform', transformStr);
-
-      // Randomly choose 30% of paragraphs to suspend
-      if (Math.random() < 0.3) {
-        const suspendX = (Math.random() * window.innerWidth - window.innerWidth / 2).toFixed(1);
-        const suspendY = (Math.random() * window.innerHeight - window.innerHeight / 2).toFixed(1);
-        const suspendZ = (Math.random() * 200 - 100).toFixed(1);
-        const suspendStr = `translate3d(${suspendX}px, ${suspendY}px, ${suspendZ}px) rotateZ(${rotateY}deg)`;
-        p.style.setProperty('--suspend-transform', suspendStr);
-        p.classList.add('suspend');
-      }
-    });
-
-    // Crumble logic
+    // Smart paragraph + image animation on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.intersectionRatio < 0.6) {
-          entry.target.classList.add('crumble');
+        const el = entry.target;
+  
+        if (entry.isIntersecting) {
+          if (el.tagName === "P") {
+            // Paragraph: random float/rotate/zoom-in
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
+  
+            el.style.opacity = "1";
+            el.style.filter = "blur(0)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+  
+            setTimeout(() => {
+              el.style.transform = "translate(0px, 0px) rotate(0deg) scale(1)";
+            }, 50);
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.add("visible");
+            el.classList.remove("hidden");
+          }
         } else {
-          entry.target.classList.remove('crumble');
+          if (el.tagName === "P") {
+            const x = Math.floor(Math.random() * 300 - 150);
+            const y = Math.floor(Math.random() * 300 - 150);
+            const rotate = Math.floor(Math.random() * 60 - 30);
+            const scale = Math.random() * 0.3 + 0.7;
+  
+            el.style.opacity = "0";
+            el.style.filter = "blur(4px)";
+            el.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale})`;
+          }
+  
+          if (el.tagName === "IMG") {
+            el.classList.remove("visible");
+            el.classList.add("hidden");
+          }
         }
       });
     }, {
-      threshold: [0, 0.6, 1]
+      threshold: 0.65,
+      rootMargin: "-20% 0px -20% 0px"
     });
-
-    allParagraphs.forEach(p => observer.observe(p));
-
-    // Floating rubble
+  
+    // Observe all paragraphs
+    document.querySelectorAll('p').forEach(p => {
+      p.style.transition = "transform 1.2s ease, opacity 1.2s ease, filter 1.2s ease";
+      observer.observe(p);
+    });
+  
+    // Observe all images (except the bag trigger image)
+    document.querySelectorAll('img:not(#bag-trigger)').forEach(img => {
+      img.classList.add("flicker-in");
+      observer.observe(img);
+    });
+  
+    // Floating shapes logic
     function createRandomShape() {
       const shape = document.createElement('div');
       shape.classList.add('shape');
       const size = Math.random() * 60 + 20;
       shape.style.width = `${size}px`;
       shape.style.height = `${size}px`;
-
+  
       shape.style.clipPath = `polygon(
         ${Math.random() * 100}% ${Math.random() * 100}%,
         ${Math.random() * 100}% ${Math.random() * 100}%,
         ${Math.random() * 100}% ${Math.random() * 100}%,
-        ${Math.random() * 100}% ${Math.random() * 100}% )`;
-
+        ${Math.random() * 100}% ${Math.random() * 100}%)`;
+  
       const startX = Math.random() * window.innerWidth;
       const startY = Math.random() * window.innerHeight;
       const endX = Math.random() * window.innerWidth;
       const endY = Math.random() * window.innerHeight;
-
+  
       shape.style.setProperty('--start-x', `${startX}px`);
       shape.style.setProperty('--start-y', `${startY}px`);
       shape.style.setProperty('--end-x', `${endX}px`);
       shape.style.setProperty('--end-y', `${endY}px`);
-
+  
       document.getElementById('shapes').appendChild(shape);
     }
-
+  
     for (let i = 0; i < 40; i++) {
       createRandomShape();
     }
+  
+    // Bag trigger animation
+    const bag = document.getElementById("bag-trigger");
+    const wrapper = document.getElementById("essay-wrapper");
+  
+    bag.addEventListener("click", () => {
+      const rect = bag.getBoundingClientRect();
+      const bagX = rect.left + rect.width / 2;
+      const bagY = rect.top + rect.height / 2;
+  
+      const allElements = wrapper.querySelectorAll("p, blockquote, img:not(#bag-trigger), h1, h2, a");
+  
+      allElements.forEach((el, i) => {
+        const elRect = el.getBoundingClientRect();
+        const centerX = elRect.left + elRect.width / 2;
+        const centerY = elRect.top + elRect.height / 2;
+        const dx = bagX - centerX;
+        const dy = bagY - centerY + window.innerHeight / 2;
+  
+        el.style.setProperty('--bag-x', `${dx}px`);
+        el.style.setProperty('--bag-y', `${dy}px`);
+  
+        setTimeout(() => {
+          el.classList.add("sucked-in");
+        }, i * 50);
+      });
+  
+      bag.onclick = () => window.location.reload();
+    });
   </script>
+  
+  
+  
+  
 </body>
 </html>

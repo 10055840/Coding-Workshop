@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Broken Text Effect</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      font-family: 'Roboto Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .scroll-wrapper {
+      max-height: 100vh;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      display: inline-block;
+      position: relative;
+      animation-name: shake;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes shake {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-3px, -5px); }
+      50%  { transform: translate(4px, 4px); }
+      75%  { transform: translate(-4px, 3px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .text-container {
+      padding: 40px;
+      margin: 0 40px;
+      text-align: left;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    li {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-wrapper">
+    <!-- Shaky Animated Title -->
+    <h1 id="broken-title">Bibliography</h1>
+
+    <!-- Section: Text -->
+    <h2>Text</h2>
+    <div class="text-container">
+      <ul>
+        <li class="bullet-2"><span>(No date) <i>Royal College of Art</i>. Available at: https://www.rca.ac.uk/more/staff/charlotte-grace/ (Accessed: 12 April 2025). </span></li>
+<li class="bullet-2"><span>Brighenti, A.M. (2010) <i>Visibility in Social Theory and Social Research</i>. London: Palgrave Macmillan. Available at: https://www.researchgate.net/publication/313859928_Visibility_in_Social_Theory_and_Social_Research (Accessed: 08 April 2025). </span></li>
+<li class="bullet-2"><span>Bennett, T. (2025) <i>More than 50,000 killed in Gaza since Israel offensive began, Hamas-run ministry says, BBC News</i>. Available at: https://www.bbc.co.uk/news/articles/clyz4nnqgvdo. (Accessed: 12 April 2025). </span></li> 
+<li class="bullet-2"><span><i>Cornelia Parker</i> (no date) <i>The Art Story</i>. Available at: https://www.theartstory.org/artist/parker-cornelia/#pnt_2 (Accessed: 27 March 2025). </span></li>
+<li class="bullet-2"><span>Deegan, C. (2018). Why do public monuments play such an important role in memory wars?. <i>Constellations</i>, 9(1), 20–33. https://doi.org/10.29173/cons29343</span></li>
+<li class="bullet-2"><span>Foucault, M. (1986) ‘Of Other Spaces’, <i>Diacritics</i>, 16(01), pp. 22–27. Available at: https://www.jstor.org/stable/464648 (Accessed: 12 April 2025). </span></li>
+<li class="bullet-2"><span>Gayle, D. (2022) <i>BLM protesters cleared over toppling of Edward Colston statue, The Guardian</i>. Available at: https://www.theguardian.com/uk-news/2022/jan/05/four-cleared-of-toppling-edward-colston-statute (Accessed: 12 April 2025). </span></li>
+<li class="bullet-2"><span>Geddes, J. (2007) <i>Interview with James E. Young, The Hedgehog Review, Critical Reflections on Contemporary Culture</i>. Available at: https://hedgehogreview.com/issues/the-uses-of-the-past/articles/interview-with-james-e-young (Accessed: 27 March 2025). </span></li>
+<li class="bullet-2"><span>Grace, C. (2023) <i>Spatial Labour and the Politics of Place in Rojava</i>. thesis. </span></li>
+<li class="bullet-2"><span>Halbwachs, M. (2022) <i>On Collective Memory</i> Lewis A. Coser. Translated by L.A. Coser. Chicago: The University of Chicago Press. </span></li>
+<li class="bullet-2"><span>Haraway, D.J. (2016) <i>Staying with the Trouble: Making Kin in the Chthulucene</i>. Durham: Duke University Press. </span></li>
+<li class="bullet-2"><span>Hayden, D. (1995) <i>The Power of Place: Urban Landscapes as Public History</i>. Cambridge, Mass: The MIT Press. </span></li>
+<li class="bullet-2"><span>Husain, M. and Weizman, E. (2024) ‘The Politics of Architecture’, <i>BBC</i>. </span></li>
+<li class="bullet-2"><span>Kareem, A. (2025) <i>Palestinians return to rubble in ‘ghost towns’ of Gaza, PBS News</i>. Available at: https://www.pbs.org/newshour/world/palestinians-return-to-rubble-in-ghost-towns-of-gaza (Accessed: 15 March 2025). </span></li>
+<li class="bullet-2"><span>Krasny, E. (2023) ‘Monuments and Conflicts; Care, Repair, Refuse, Resist’, <i>Elke Krasny–Monuments and Conflicts: Care, Repair, Refuse, Resist</i>. Los Angeles: MAK Center for Art and Architecture, 31 August. Available at: https://www.makcenter.org/events/monuments-and-conflicts (Accessed: 15 March 2025). </span></li>
+<li class="bullet-2"><span>Le Guin, U.K. (1988) <i>The Carrier Bag Theory of Fiction</i>. St. Martin’s Press. Available at: https://monoskop.org/images/9/96/Le_Guin_Ursula_K_1986_1989_The_Carrier_Bag_Theory_of_Fiction.pdf (Accessed: 27 March 2025). </span></li>
+<li class="bullet-2"><span>Lefebvre, H. (2009) <i>The Production of Space</i> Donald Nicholson-Smith. Translated by D. Nicholson-Smith. Malden, MA: Blackwell. </span></li>
+<li class="bullet-2"><span>Lloyd, J. (2022) ‘Monuments and the Sited Struggles of Memorialisation’, <i>Space and Culture</i>, 25(2), pp. 341–344. Available at: https://journals.sagepub.com/doi/epub/10.1177/1206331221990947 (Accessed: 27 March 2025). </span></li>
+<li class="bullet-2"><span>Mukherjee, S. and Ghosh, A. (2023) ‘Exploding all explosions Reconfiguring art and architectural meaning, matter, and space with Cornelia Parker’s Cold Dark Matter (1991)’, <i>Navigating Boundaries: Architecture Beyond Human</i>, 31(01). Available at: https://journals.ed.ac.uk/ear/issue/view/583 (Accessed: 27 March 2025). </span></li>
+<li class="bullet-2"><span>Mumford, L. (1961) <i>The City in History: Its Origins, its Transformations, its Prospects</i>. New York: Harcourt, Brace & World, Inc. </span></li>
+<li class="bullet-2"><span>Nora, P. (1989) ‘Between Memory and History: Les Lieux de Mémoire’, <i>Representations</i>, 26(Memory and Counter-Memory), pp. 7–24. Available at: http://www.jstor.org/stable/2928520?origin=JSTOR-pdf (Accessed: 25 March 2025). </span></li>
+<li class="bullet-2"><span>Riegl, A. (1982) <i>The modern cult of monuments: Its character and its origin</i>. (1903) Cambridge (Mass.): MIT Press. </span></li>
+<li class="bullet-2"><span>Sert, J. L., Léger, F., and Giedion, S., (1943) ‘Nine Points on Monumentality.’ In: Giedion, S., (1958) <i>Architecture, You and Me</i>. Cambridge: Harvard University Press</span></li>
+<li class="bullet-2"><span>Sharpe, C.E. (2016) <i>In the Wake: On Blackness and Being. Durham</i>, North Carolina: Duke University Press. </span></li>
+<li class="bullet-2"><span>Sorkin, M. (1994) <i>Exquisite Corpse: Writing on Buildings</i>. London: Verso. </span></li>
+<li class="bullet-2"><span>Van Damme, O. and Faivre Le Cadre, A.-S. (no date) <i>66% of The Total Structures in the Gaza Strip Have Sustained Damage, UNOSAT’s Analysis Reveals, UNITAR</i>. Available at: https://unitar.org/about/news-stories/press/66percent-total-structures-gaza-strip-have-sustained-damage-unosats-analysis-reveals (Accessed: 15 March 2025). </span></li>
+<li class="bullet-2"><span>Wood, D. (2024) <i>These maps and images show what’s left of Gaza, 1 year into the Israel-Hamas war, NPR</i>. Available at: https://www.npr.org/2024/10/09/g-s1-27175/israel-hamas-war-gaza-map (Accessed: 15 March 2025). </span></li>
+<li class="bullet-2"><span>Young, J.E. (1993) <i>The texture of memory : Holocaust memorials and meaning</i>. New Haven, Connecticut: Yale University Press. Available at: https://archive.org/details/textureofmemoryh0000youn/page/n5/mode/2up (Accessed: 27 March 2025). </span></li>
+
+      </ul>
+    </div>
+
+    <!-- Section: Photographs -->
+    <h2>Photographs</h2>
+    <div class="text-container">
+      <ul>
+        <li class="bullet-2"><span>AFP (2024) <i>Palestinians carry their belongings as they prepare to flee Rafah, Gaza, on 13 May 2024, War on Gaza: The world must stop a second Nakba 76 years after the first</i>. Middle East Eye. Available at: https://www.middleeasteye.net/opinion/gaza-war-world-stop-second-nakba-76-years-after-first (Accessed: 12 March 2025). </span></li>
+<li class="bullet-2"><span>AFP (no date) <i>Displaced Palestinians returning to the war-devastated Jabaliya refugee camp, The Guardian. </i>Available at: https://www.theguardian.com/world/gallery/2025/jan/20/devastation-aerial-views-gaza-ceasefire-in-pictures (Accessed: 07 March 2025). </span></li>
+<li class="bullet-2"><span>Al-Qattaa, O. (no date) <i>People visiting their ruined home in Jabaliya, The Guardian</i>. AFP. Available at: https://www.theguardian.com/world/gallery/2025/jan/20/devastation-aerial-views-gaza-ceasefire-in-pictures (Accessed: 07 March 2025). </span></li>
+<li class="bullet-2"><span>Cobb, S. (2019) <i>The statue in 2019, Statue of Edward Colston</i>. Wikipedia. Available at: https://en.wikipedia.org/wiki/Edward_Colston (Accessed: 07 March 2025). </span></li>
+<li class="bullet-2"><span><i>Cornelia Parker, Cold Dark Matter: An Exploded View, 1991</i> (no date) <i>Cornelia Parker Cold Dark Matter: An Exploded View</i>. Chisenhale Gallery. Available at: https://chisenhale.org.uk/project/cornelia-parker/ (Accessed: 11 March 2025). </span></li>
+<li class="bullet-2"><span><i>Displaced Palestinians carry their belongings as they walk amid the devastation upon their return to central Rafah in the southern Gaza Strip on Jan. 19, 2025, after a ceasefire between Israel and the Hamas movement took effect</i>.(no date) <i>Thousands wait to return to northern Gaza, Trump urges Jordan, Egypt to take Palestinians . </i> VOA News. Available at: https://www.voanews.com/a/trump-wants-jordan-and-egypt-to-accept-more-refugees/7950563.html (Accessed: 14 March 2025). </span></li>
+<li class="bullet-2"><span>Gravil, K. (2020) <i>The statue of the slave trader Edward Colston falling into the water on Sunday after protesters in Bristol, England, pulled it down, A Statue Was Toppled. Can We Finally Talk About the British Empire? </i> New York Times. Available at: https://www.nytimes.com/2020/06/12/opinion/edward-colston-statue-racism.html (Accessed: 12 April 2025). </span></li>
+<li class="bullet-2"><span>Jadallah, A. (2024) <i>The wreckage of homes, families and traditions mark Ramadan in Gaza, Putin extends his rule over Russia and ‘Dune: Part Two’ outearns entire run of first film: Morning Rundown</i>. NBC News. Available at: https://www.nbcnews.com/news/putin-extends-rule-russia-dune-morning-rundown-rcna143815 (Accessed: 11 March 2025). </span></li>
+<li class="bullet-2"><span>Nassar, W. (2024) <i>Salma Najjar, 64, sits outside a makeshift tent on the rubble of her home in Khuzaa in the southeast of the Gaza Strip., In Gaza’s Rubble, Shelters Symbolize the Challenge Ahead</i>. NYT. Available at: https://www.nytimes.com/2014/10/07/world/middleeast/gaza-war-tents-trailers.html (Accessed: 13 March 2025). </span></li>
+<li class="bullet-2"><span>Pitarakis, L. (2014) <i>Palestinians carry their belongings after salvaging them on Friday from destroyed houses in the heavily bombed village of Beit Hanoun, Gaza Strip., Gaza: a brief return to normality – and then war returns</i>. The Guardian. Available at: https://www.theguardian.com/world/2014/aug/01/gaza-brief-normality-war-returns-ceasefire-broke-israel (Accessed: 12 March 2025). </span></li>
+<li class="bullet-2"><span></i>View of Ramses Square a few years after the Statue of Ramesses II was erected</i> (no date) <i>Tour Egypt</i>. Available at: https://www.touregypt.net/featurestories/ramsessquare.htm (Accessed: 15 March 2025). </span></li>
+<li class="bullet-2"><span><i>Wake created in the water by a boat </i> (2023) <i>Watch Your Wake: Boat Wake Research Underway in the Region</i>. State of the Bay. Available at: https://stateofthebay.ca/watch-your-wake/ (Accessed: 18 March 2025). </span></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const h1 = document.getElementById('broken-title');
+    const text = h1.innerText.split('');
+    h1.innerHTML = '';
+  
+    text.forEach(char => {
+      const span = document.createElement('span');
+      span.textContent = char;
+  
+      // ✅ Slower, random speed per letter
+      const duration = (4 + Math.random() * 2).toFixed(2); // 4s to 6s
+      const delay = Math.random().toFixed(2); // 0s–1s
+      const direction = Math.random() > 0.5 ? 'alternate' : 'alternate-reverse';
+  
+      span.style.animationDuration = `${duration}s`;
+      span.style.animationDelay = `${delay}s`;
+      span.style.animationDirection = direction;
+  
+      h1.appendChild(span);
+    });
+  </script>
+
+</body>
+</html>
